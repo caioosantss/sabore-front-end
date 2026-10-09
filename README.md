@@ -3,7 +3,7 @@
 Front-end em Next.js + TypeScript preparado para:
 
 - Vercel no front-end
-- Railway no back-end
+- Render no back-end
 - URLs de imagens vindas do Firebase Storage
 - Home com sidebar e cards de receitas
 - Login
@@ -25,10 +25,10 @@ Crie `.env.local` na raiz:
 NEXT_PUBLIC_API_URL=http://localhost:8080
 ```
 
-Em produção, use a URL pública do Railway:
+Em produção, use a URL pública do Render:
 
 ```env
-NEXT_PUBLIC_API_URL=https://seu-backend.up.railway.app
+NEXT_PUBLIC_API_URL=sua api aqui
 ```
 
 ## 3. Executar
@@ -118,7 +118,7 @@ A confirmação de senha é validada apenas no front e não é enviada para a AP
 
 ## CORS no back-end
 
-Como Vercel e Railway usarão domínios diferentes, configure CORS no back-end para permitir o domínio do front:
+Como Vercel e render usarão domínios diferentes, configure CORS no back-end para permitir o domínio do front:
 
 ```text
 https://seu-front.vercel.app
