@@ -60,11 +60,12 @@ async function request<T>(
   options: RequestInit = {}
 ): Promise<T> {
   const token = getToken();
+  const url = getApiUrl(path);
 
   let response: Response;
 
   try {
-    response = await fetch(getApiUrl(path), {
+    response = await fetch(url, {
       ...options,
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +73,8 @@ async function request<T>(
         ...options.headers,
       },
     });
-  } catch {
+  } catch (error) {
+    console.error(`[api] Falha ao chamar ${url}`, error);
     throw new Error(
       "Não foi possível falar com o servidor. Verifique sua conexão."
     );
@@ -99,6 +101,7 @@ async function requestForm<T>(
   input: RecipeInput
 ): Promise<T> {
   const token = getToken();
+  const url = getApiUrl(path);
 
   const body = new FormData();
   body.append("nome", input.nome);
@@ -116,12 +119,13 @@ async function requestForm<T>(
   let response: Response;
 
   try {
-    response = await fetch(getApiUrl(path), {
+    response = await fetch(url, {
       method,
       headers: token ? { Authorization: `Bearer ${token}` } : {},
       body,
     });
-  } catch {
+  } catch (error) {
+    console.error(`[api] Falha ao chamar ${url}`, error);
     throw new Error(
       "Não foi possível falar com o servidor. Verifique sua conexão."
     );
