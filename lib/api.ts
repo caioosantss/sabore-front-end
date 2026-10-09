@@ -1,12 +1,12 @@
 import type { GuideFilter, Recipe, RecipeInput } from "@/types/recipe";
 import type { AuthUser } from "@/types/auth";
 
-const API_URL = process.env.CONFIG?.replace(/\/$/, "");
+   const API_URL = process.env.NEXT_PUBLIC_CONFIG?.replace(/\/$/, "");
 
 function getApiUrl(path: string) {
   if (!API_URL) {
     throw new Error(
-      "CONFIG não foi configurada. Crie um arquivo .env.local."
+      "NEXT_PUBLIC_CONFIG não foi configurada. Crie um arquivo .env.local."
     );
   }
 
