@@ -1,7 +1,9 @@
 import type { GuideFilter, Recipe, RecipeInput } from "@/types/recipe";
 import type { AuthUser } from "@/types/auth";
 
-   const API_URL = process.env.NEXT_PUBLIC_CONFIG?.replace(/\/$/, "");
+   const API_URL = (
+  process.env.NEXT_PUBLIC_API_URL ?? "https://sabore-back-end.onrender.com"
+).replace(/\/$/, "");
 
 function getApiUrl(path: string) {
   if (!API_URL) {
